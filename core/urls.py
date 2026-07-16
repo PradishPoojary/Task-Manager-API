@@ -9,6 +9,6 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     
-    # We will hook up our task URLs here in the next phase
-    # path('api/', include('tasks.urls')),  <-- Temporarily commented out until Phase 3!
+   
+     path('api/', include('tasks.urls')), 
 ]
