@@ -36,4 +36,16 @@ The application relies on a strictly normalized relational database.
 * `PUT /api/tasks/<id>/` - Update an entire task record.
 * `DELETE /api/tasks/<id>/` - Permanently delete a task.
 
-> **Note to Reviewers:** Visual evidence of successful API execution and JWT authorization is available in the `assets` folder.
+## 📸 Visual Execution Proof
+
+### 1. Stateless Authentication (JWT Generation)
+*Successfully generating an encrypted access token from user credentials.*
+![Authentication Proof](assets/auth_token.png)
+
+### 2. Secure API Routing (Task Creation)
+*Successfully passing the Bearer token to create a task tied to the active user.*
+![Task Creation Proof](assets/create_task.png)
+
+### 3. Relational Database State
+*Raw SQLite view demonstrating data persistence and foreign key assignment.*
+![Database Proof](assets/sqlite_database.png)
