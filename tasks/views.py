@@ -1,25 +1,23 @@
-from django.shortcuts import render
-
-# Create your views here.
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from .models import Task
 from .serializers import TaskSerializer
+from .permissions import IsOwnerOrManagerReadOnly
 
 class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
-    permission_classes = [IsAuthenticated] # Locks down the endpoint to JWT holders only
+    # Apply our new custom RBAC rule
+    permission_classes = [IsAuthenticated, IsOwnerOrManagerReadOnly] 
 
     def get_queryset(self):
         """
-        Security Override: This ensures that when a user requests the list of tasks, 
-        they ONLY get the tasks that belong to their specific user ID.
+        Manager vs Employee Routing:
+        Managers see the whole database. Employees only see their own rows.
         """
-        return Task.objects.filter(user=self.request.user)
+        user = self.request.user
+        if user.is_staff:
+            return Task.objects.all()
+        return Task.objects.filter(user=user)
 
     def perform_create(self, serializer):
-        """
-        Security Override: When a new task is created, automatically attach 
-        the currently authenticated user to it.
-        """
         serializer.save(user=self.request.user)

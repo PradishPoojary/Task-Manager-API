@@ -49,3 +49,10 @@ The application relies on a strictly normalized relational database.
 ### 3. Relational Database State
 *Raw SQLite view demonstrating data persistence and foreign key assignment.*
 ![Database Proof](assets/sqlite_database.png)
+
+### 4. Dynamic Many-to-Many Relationships (Tags)
+*Demonstrating advanced serialization and dynamic Tag creation/assignment via POST payload.*
+![Advanced Tags Proof](assets/advanced_tags.png)
+
+### 5. Role-Based Access Control (RBAC)
+*Custom DRF permission classes enforcing Manager (Global Read) vs. Employee (Strict Tenant Isolation) hierarchies.*
