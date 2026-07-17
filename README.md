@@ -56,3 +56,12 @@ The application relies on a strictly normalized relational database.
 
 ### 5. Role-Based Access Control (RBAC)
 *Custom DRF permission classes enforcing Manager (Global Read) vs. Employee (Strict Tenant Isolation) hierarchies.*
+
+### 6. Full Data Lifecycle (Update & Delete)
+*Successful execution of PUT (200 OK) and DELETE (204 No Content) requests, proving complete CRUD functionality and proper HTTP status code handling.*
+
+**Task Update (PUT):**
+![Update Task Proof](assets/update_task.png)
+
+**Task Deletion (DELETE):**
+![Delete Task Proof](assets/delete_task.png)
